@@ -7,7 +7,7 @@
         public int ConvertNTo10(string number, int nbase)
         {
             int res = 0;
-            if (number.Length != 0)
+            if (number.Length != 0 && nbase <= 32)
             {
                 int exp = 1;
 
@@ -16,7 +16,10 @@
 
                 for (int i = 0; i < number.Length; i++)
                 {
-                    res += (int)Char.GetNumericValue(number[i]) * exp;
+                    if (Char.IsDigit(number[i]))
+                        res += (int)Char.GetNumericValue(number[i]) * exp;
+                    else
+                        res += ((int)number[i] - 55) * exp;
                     exp /= nbase;
                 }
             }
@@ -28,20 +31,26 @@
         {
             string res = "";
 
-            while (number != 0)  
+            if (nbase <= 32)
             {
-                res += (number % nbase).ToString();
-                number /= nbase;
+                while (number != 0)
+                {
+                    int mod = number % nbase;
+                    if (mod < 10)
+                        res += mod.ToString();
+                    else res += Convert.ToChar(mod + 55);
+                    number /= nbase;
+                }
+
+                char[] reverse = new char[res.Length];
+
+                for (int i = 0; i < res.Length; i++)
+                {
+                    reverse[res.Length - 1 - i] = res[i];
+                }
+                res = new string(reverse);
             }
-
-            char[] reverse = new char[res.Length];
-
-            for (int i = 0; i < res.Length; i++)
-            {
-                reverse[res.Length - 1 - i] = res[i];
-            }
-
-            return new string(reverse);
+            return res;
         }
 
         //перевод числа number с основанием nbase1 в систему с основанием nbase2
@@ -49,5 +58,4 @@
         {
             return Convert10ToN(ConvertNTo10(number, nbase1), nbase2);
         }
-
     }
