@@ -1,10 +1,8 @@
-    class NumericalSystemHandler
+   //использование: ConvertNN.ConvertNto10(50,2)
+class ConvertNN
     {
-        //пустой конструктор для использования методов
-        public NumericalSystemHandler() { }
-
         //перевод числа number с оснований nbase в десятичное число - по формуле A = Mn * Q^n + Mn-1 * Q^(n-1) ...
-        public int ConvertNTo10(string number, int nbase)
+        static public int ConvertNTo10(string number, int nbase)
         {
             int res = 0;
             if (number.Length != 0 && nbase <= 32)
@@ -27,7 +25,7 @@
         }
 
         //перевод десятичного числа number в систему с основанием nbase - формируются остатки от деления с последующим переворотом строки
-        public string Convert10ToN(int number, int nbase)
+        static public string Convert10ToN(int number, int nbase)
         {
             string res = "";
 
@@ -54,7 +52,7 @@
         }
 
         //перевод числа number с основанием nbase1 в систему с основанием nbase2
-        public string ConvertNtoN(string number, int nbase1, int nbase2)
+        static public string ConvertNtoN(string number, int nbase1, int nbase2)
         {
             return Convert10ToN(ConvertNTo10(number, nbase1), nbase2);
         }
