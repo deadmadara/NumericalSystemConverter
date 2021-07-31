@@ -1,6 +1,6 @@
 # NumericalConverter
-Simple numerical converter from one system to another. Supports 32 positions. Inspired by Russian exam. (C#)  
+Simple converter from one numerical system to another, inspired by Russian exam. Supports 32 numerical systems. (C#)  
 About: https://deadmadara.github.io/numerical-converter/
 ____________________________________________________________________
-Простой переводчик из одной системы счислению в другую. Поддерживает 32 разряда. Вдохновлено заданием №5 из ЕГЭ. (C#)  
+Простой конвертер из одной системы счисления в другую, вдохновлённый ЕГЭ. Поддерживает 32 разряда. (C#)
 Подробнее: https://deadmadara.github.io/numerical-converter/
